@@ -30,9 +30,7 @@ sudo yum -y install python{,-pip}
 ## Install
 
 ```bash
-git clone https://github.com/eternalharvest/r53update && cd r53update
-sudo pip install -r requirements.txt
-sudo cp r53update /usr/local/bin
+sudo -H pip install git+https://github.com/eternalharvest/r53update
 ```
 
 ## Usage
