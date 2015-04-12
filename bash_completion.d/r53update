@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# R53Update Dynamic DNS Updater v0.5.0
+# R53Update Dynamic DNS Updater
 # (C)2014 Takuya Sawada All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

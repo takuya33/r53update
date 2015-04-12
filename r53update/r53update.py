@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# R53Update Dynamic DNS Updater v0.5.0
+# R53Update Dynamic DNS Updater
 # (C)2014 Takuya Sawada All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,7 @@
 from boto.route53.connection import Route53Connection
 from boto.route53.record import ResourceRecordSets
 from botocore.session import Session
+from pkg_resources import get_distribution
 
 import sys
 import argparse
@@ -326,7 +327,8 @@ class R53UpdateApp(App):
 
 	def show_version(self):
 		print >>sys.stderr, "Copyrights (c)2014 Takuya Sawada All rights reserved."
-		print >>sys.stderr, "Route53Update Dynamic DNS Updater 0.5.0"
+		print >>sys.stderr, "Route53Update Dynamic DNS Updater v%s" % get_distribution("r53update").version
+
 
 
 def main():
