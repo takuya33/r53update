@@ -116,14 +116,18 @@ class R53UpdateApp(App):
 	##
 	# Context
 	class Context(object):
-		def __init__(self, profile=''):
+		def __init__(self, profile=None):
 			self.session = Session()
 			self.session.profile = profile
-	
+
 		def getR53Connection(self):
+			credential = self.session.get_credentials()
+			if not credential:
+				raise RuntimeError("failed to get aws credential")
+
 			return Route53Connection(
-				self.session.get_scoped_config()['aws_access_key_id'],
-				self.session.get_scoped_config()['aws_secret_access_key']
+				credential.access_key,
+				credential.secret_key
 			)
 
 	##
@@ -218,7 +222,7 @@ class R53UpdateApp(App):
 		self._gipmethods['localhost'] = R53UpdateApp.NETIFACES_GlobalIP_DetectionMethod(self)
 
 		# optional argument
-		self._parser.add_argument('--profile', type=str, metavar='PROFILE', default='',
+		self._parser.add_argument('--profile', type=str, metavar='PROFILE', default=None,
 			help='name of a profile to use, or "default" to use the default profile').completer = R53UpdateApp.ProfileCompleter(self)
 		self._parser.add_argument('--method', type=str, metavar='METHOD',
 			default='opendns.com', help='detection method of global IP').completer = R53UpdateApp.MethodCompleter(self)
