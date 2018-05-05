@@ -34,6 +34,9 @@ setup(
 		'dnspython==1.15.0',
 		'netifaces==0.10.6'
 	],
+	tests_requires = [
+		'mock==2.0.0',
+	],
 	classifiers = [
 		'Development Status :: 4 - Beta',
 		'Environment :: Console',
