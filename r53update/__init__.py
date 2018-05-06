@@ -1,3 +1,3 @@
 __all__ = ['main']
 
-from .r53update import main
+from .r53update import *

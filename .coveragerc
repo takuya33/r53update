@@ -1,0 +1,6 @@
+# .coveragerc to control coverage.py
+[run]
+source =
+	r53update
+omit =
+	*__init__*
